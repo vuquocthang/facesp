@@ -43,6 +43,7 @@ $account = SocialFacebookAccount::where('user_id', $user->id)->first();
 
 ?>
 
+
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">

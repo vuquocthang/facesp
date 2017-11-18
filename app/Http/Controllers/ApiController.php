@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Cl0ne;
 use App\Group;
 use App\Profile;
+use App\Result;
 use App\Spam;
 use App\User;
 use Illuminate\Http\Response;
@@ -30,7 +31,7 @@ class ApiController extends Controller
     function joinGroup(){
         $oldestSpam = Spam::orderBy('updated_at', 'ASC')->first();
 
-        //$user = User::findOrFail($oldestSpam->uid);
+        $user = User::findOrFail($oldestSpam->uid);
 
         $profileId = $oldestSpam->profile_id;
 
@@ -43,6 +44,8 @@ class ApiController extends Controller
 
         $res = [
            // 'email' => $user->email,
+
+            'userid' => $user->id,
             'profile_name' => $profile->name,
             'uid' => $oldestClone->uid,
             'token' => $oldestClone->token,
@@ -75,5 +78,19 @@ class ApiController extends Controller
         $cl0ne->save();
 
         return response()->json($cl0ne, 200);
+    }
+
+    /**
+     *
+     */
+    function doResult(){
+        $content = Input::get('content');
+
+        Result::create([
+            'value' => $content
+        ]);
+
+        return 'true';
+
     }
 }

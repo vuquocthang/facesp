@@ -54,7 +54,8 @@ class CloneProcessController extends Controller
                             'email' => $email,
                             'password' => $pw,
                             'cookie' => $cookie,
-                            'token' => $token
+                            'token' => $token,
+                            'status' => ''
                         ]);
                     }catch (\Exception $exception){
                         echo $exception;

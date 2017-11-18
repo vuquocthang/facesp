@@ -78,6 +78,11 @@ Route::get('/clone/read', 'CloneProcessController@readFileByLine');
 
 Route::get('/api-v1/clone/doupdate', 'ApiController@cloneUpdate' );
 
+/*
+ * doresult
+ */
+Route::get('/api-v1/doresult', 'ApiController@doResult' );
+
 Route::get('/api-v1/doaction', 'ApiController@joinGroup');
 
 Route::get('/api-v1/share-post', 'ApiController@sharePost');
